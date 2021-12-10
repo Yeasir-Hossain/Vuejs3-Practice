@@ -8,6 +8,44 @@
     <title>Document</title>
 
     <script src="https://unpkg.com/vue@3.0.2"></script>
+
+
+    <style>
+        body {
+            background: #eee;
+            max-width: 960px;
+            margin: 20px auto;
+        }
+        
+        img {
+            width: 20%;
+            height: 150px;
+        }
+        
+        p,
+        h3,
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        
+        li {
+            list-style-type: none;
+            background: green;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        
+        li.fav {
+            background: red;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
@@ -22,11 +60,12 @@
             <p>
                 <!-- {{books[0].title}} - {{books[0].author}} -->
                 <ul>
-                    <div v-for="item in books" :class={fav: item.isFav}>
+                    <li v-for="item in books" :class="{fav: item.isFav}" @click="item.isFav = !item.isFav">
+                        <!-- <li v-for="item in books" @click="toogleClass"> -->
                         <img :src="item.img" :alt="item.title">
                         <h3> {{item.title}} </h3>
                         <p> {{item.author}} </p>
-                    </div>
+                    </li>
                 </ul>
             </p>
 
