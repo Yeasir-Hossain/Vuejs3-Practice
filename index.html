@@ -16,13 +16,17 @@
 
     <div id="app">
         <div v-if="showBooks">
+
+            <a v-bind:href="url">Google</a>
+
             <p>
                 <!-- {{books[0].title}} - {{books[0].author}} -->
                 <ul>
-                    <li v-for="item in books">
+                    <div v-for="item in books" :class={fav: item.isFav}>
+                        <img :src="item.img" :alt="item.title">
                         <h3> {{item.title}} </h3>
                         <p> {{item.author}} </p>
-                    </li>
+                    </div>
                 </ul>
             </p>
 
